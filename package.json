@@ -1,0 +1,21 @@
+{
+  "name": "police-api",
+  "version": "1.0.0",
+  "description": "API Project that let's you check the number and reasons for UK police searches in your area.",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Patricia Molnar",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^10.0.2",
+    "cssnano": "^4.1.10",
+    "gulp": "^4.0.2",
+    "gulp-minify": "^3.1.0",
+    "gulp-postcss": "^9.0.0",
+    "gulp-sass": "^4.1.0",
+    "postcss": "^8.1.8"
+  },
+  "dependencies": {}
+}

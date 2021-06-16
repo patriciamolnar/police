@@ -1,0 +1,332 @@
+@import './_config';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+
+body {
+  width: 100%;
+  background-color: darken($navy, 15%);
+  font-family: $font;
+  font-weight: 400;
+  text-align: center;
+  overflow-x: hidden;
+  
+  
+  //Taking care of sticky footer; 
+  position: relative;
+  min-height: 100vh;
+  margin: 0 0 2em;
+}
+
+//Header
+.header {
+    width: 100%; 
+    color: #fff;
+    background-color: darken($navy, 20%); 
+    padding: 1.5em 0 1.7em; 
+
+    .heading {
+        @include font(1.5rem);  
+        position: relative;
+        display: inline-block;
+
+        &::before {
+            @include pseudo-underline();
+            top: -4px; 
+        }
+
+        &::after {
+            @include pseudo-underline(); 
+            bottom: -6px; 
+        }
+    }
+}
+
+
+a {
+    color: $orange; 
+    display: inline-block; 
+    border-bottom: 1px solid $orange;
+    text-decoration: none;
+    font-weight: 700;
+
+   &:focus { //leyboard tabbing
+        color: $sky; 
+        outline: 1px solid $sky;
+        outline-offset: 3px;
+        border: none; 
+    }
+
+    &:focus:not(:focus-visible) { //click, mobile tab
+        color: lighten($orange, 10%); 
+        outline: none; 
+        border-bottom: 1px solid lighten($orange, 10%);
+    }
+}
+
+//Error messages 
+
+.error {
+    color: $red;
+    font-size: 1.2rem;
+    font-weight: 700;
+    height: 100%;
+    margin: 0 0.5em 1.5em 0.5em;
+}
+  
+.error-border {
+    border: 2px solid $red;
+}
+
+.exclaim {
+    display: inline-block;
+    width: 1.5rem;
+    height: 1.5rem;
+    border: 2px solid $red;
+    line-height: 1.4rem;
+    font-size: 0.85rem;
+    @include border-rad(2rem);
+}
+
+.background {
+    display: inline-block; 
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 0.1em 0.8em 0.2em; 
+    @include border-rad(); 
+}
+
+#form {
+    position: relative; 
+    margin: 0 auto;
+    padding: 1.5em 0 1em;
+    color: #fff;
+
+    &::after {
+        content: ''; 
+        position: absolute; 
+        top: 0; 
+        bottom: 0;
+        left: 0; 
+        right: 0;
+        background-color: lighten($navy, 10%);
+        background-image: url('./cops.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        background-blend-mode: luminosity;
+        z-index: -1;
+        opacity: 0.7; 
+    }
+
+    label, input {
+        display: block;
+        @include marg(0);
+    }
+
+    label {
+        @include font(1.3rem); 
+        text-shadow: 0 0 5px #000; 
+    }
+
+    input {
+        @include input-style(); 
+        @include marg();
+        padding: 12px; 
+
+        &::placeholder {
+            color: $navy;
+        }
+    }
+
+    #dateSelector {
+        display: inline-grid; 
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 5px;
+        justify-content: center;
+        align-items: center;
+        @include width(45%);
+    }
+
+    select {
+        @include input-style(); 
+        display: inline-block;
+        padding: 0 12px;
+    }
+
+    button {
+        display: block;
+        color: darken($navy, 20%);
+        background-color: $orange; 
+        padding: 0.5em 1.5em; 
+        border: 1px solid $orange;
+        border-radius: 1.5em;
+        @include marg(1em); 
+        @include font();
+        font-family: $font;
+        font-weight: 700;
+        z-index: 10; 
+
+    &:focus {
+        background-color: $sky;
+        border: 1px solid $sky; 
+        outline: none; 
+        }
+    }
+
+    p {
+        text-shadow: 0 0 5px #000; 
+    }
+}
+
+
+#mapContainer {
+    background-color: darken($navy, 20%);
+    padding-right: 5px;
+}
+
+.other-resolution {
+    color: #fff; 
+    padding: 0.5em; 
+}
+
+#infoContainer {
+    background-color: darken($navy, 20%); 
+    color: #fff;
+    
+    .infoDiv {
+        padding: 0.5em;
+        text-align: left;
+        position: static;
+    
+        p {
+          margin: 0.5em 0.5em 0.5em 1em;
+        }
+    
+        .square {
+          width: 1rem;
+          height: 1rem;
+          display: inline-block;
+        }
+
+        .title {
+            position: relative;
+            display: inline-block;
+        }
+        
+          .title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+            right: 0;
+            height: 2px;
+            background-color: $sky;
+        }
+    
+        .description {
+          color: #fff;
+        }
+    }
+}
+
+#last {
+    background-color: darken($navy, 15%); 
+    padding: 1em 1em 0.5em;
+    @include marg(0.5em); 
+    color: #fff;
+    font-size: 0.8rem; 
+}
+
+.push {
+    height: 0.5rem;
+}
+
+footer {
+    color: $grey;
+    background-color: darken($navy, 20%);
+    padding: 0.5em;
+    @include font(0.8rem);
+
+    //sticky footer; 
+    position: absolute;
+    bottom: -2rem;
+    width: 100%;
+    height: 2.5rem;
+}
+
+
+@media only screen and (min-width: 500px) {
+    #postcode {
+        @include width(45%);
+    }
+}
+
+
+@media only screen and (min-width: 800px) {
+    #form {
+        min-height: 390px;
+    }
+
+    #container input, #container label, #form #dateSelector {
+        @include width(40%);
+    }
+
+    #mapContainer, #infoContainer, #last, footer {
+        padding-left: 2em; 
+        padding-right: 2em;
+    }
+      
+    #infoContainer {
+        display: flex; 
+        flex-direction: row; 
+        flex-wrap: wrap; 
+        justify-content: left;
+        align-items: stretch;
+        
+        .infoDiv {
+          width: 50%;
+          padding: 1em; 
+          position: relative;
+        }
+
+      
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+      
+    #mapContainer, #infoContainer, #last, footer {
+        padding-left: 5em; 
+        padding-right: 5em;
+    }
+      
+      
+    #infoContainer {
+        .infoDiv {
+          width: 33%;
+          padding: 2em 1.5em; 
+        }
+    }
+}
+
+@media not all and (hover: none) {
+
+    a:hover {
+        color: darken($orange, 10%);
+        border-bottom: 1px solid darken($orange, 10%);
+    }
+
+    #form {
+
+        button:hover {
+            background-color: darken($orange, 10%);
+            border: 1px solid darken($orange, 10%); 
+        }
+    }
+
+}

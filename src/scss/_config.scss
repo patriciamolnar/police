@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700;800&display=swap');
+
+/* colors */
+$red: #ff2e2e;
+$navy: #264F73;
+$sky: #6666cc;
+$orange: #FF7350;
+$grey: #EFF4F5;
+
+/*fonts*/
+$font: 'Nunito', sans-serif;
+
+/*default parameters*/
+$default-margin: 0.5rem;
+$default-radius: 0.5rem;
+$default-width: 90%;
+$default-size: 1rem; 
+
+/*Create default padding value;*/
+@mixin marg($num: $default-margin) {
+  margin: $num auto;
+}
+
+@mixin border-rad($num: $default-radius) {
+  border-radius: $num;
+}
+
+@mixin width($percentage: $default-width) {
+  width: $percentage;
+}
+
+@mixin font($rem: $default-size) {
+  font-size: $rem;
+}
+
+@mixin pseudo-underline() {
+  content: '';
+  position: absolute; 
+  left: 50%; 
+  transform: translateX(-50%); 
+  width: 30%; 
+  height: 2px; 
+  background-color: $orange;
+}
+
+@mixin input-style() {
+  @include border-rad();
+  border: none;
+  height: 2rem;
+  outline-color: darken($navy, 15%);
+  font-family: $font;
+  font-weight: 600;
+  font-size: 1rem;
+  color: $navy;
+}
