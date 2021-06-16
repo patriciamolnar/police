@@ -247,6 +247,9 @@ $(document).ready(function() {
       if(val === "Articles for use in criminal damage") {
         result[0][i] = "Criminal damage";
       }
+      if(val === "Goods on which duty has not been paid etc.") {
+        result[0][i] = "Duty not paid";
+      }
     });
 
     //Breaking up the x-axis names into arrays, so they fit without rotation:
@@ -263,12 +266,11 @@ $(document).ready(function() {
     
 
     var $canvas = $('<canvas></canvas>');
-     
 
     //check window size to determine whether desktop/mobile version should be displayed. 
     if (window.innerWidth < 900) {
       $canvas[0].height = 500;
-    }
+    } 
      
     var ctx = $canvas[0].getContext('2d');
 
