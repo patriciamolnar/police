@@ -124,7 +124,6 @@ $(document).ready(function() {
           
       }, 
       error: function(xhr){
-        //console.log("An error occured: " + xhr.status + " " + xhr.statusText);
         $inputField.addClass('error');
         $inputField.addClass('error-border');
         $error.html("<span class='background'><span class='exclaim'>!</span> Invalid postcode</span>");
@@ -141,7 +140,6 @@ $(document).ready(function() {
     var year = $('#year').val();
     
     var url = 'https://data.police.uk/api/stops-street?lat=' + lat + '&lng=' + lon + '&date=' + year + "-" + month; 
-    console.log(url);
 
     $.ajax({
       url: url,
@@ -192,8 +190,6 @@ $(document).ready(function() {
         result[3][result[3].length] = 0;
       }
     });
-
-    // console.log(result[0]); 
     
     //Getting y-Axis data 
     $.each(arr, function(i, val) {
