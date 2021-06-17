@@ -6,8 +6,6 @@
   box-sizing: border-box;
 }
 
-
-
 body {
   width: 100%;
   background-color: darken($navy, 15%);
@@ -15,7 +13,6 @@ body {
   font-weight: 400;
   text-align: center;
   overflow-x: hidden;
-  
   
   //Taking care of sticky footer; 
   position: relative;
@@ -70,7 +67,6 @@ a {
 }
 
 //Error messages 
-
 .error {
     color: $red;
     font-size: 1.2rem;
@@ -95,7 +91,7 @@ a {
 
 .background {
     display: inline-block; 
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(255, 255, 255, 0.85);
     padding: 0.1em 0.8em 0.2em; 
     @include border-rad(); 
 }
@@ -141,6 +137,11 @@ a {
         &::placeholder {
             color: $navy;
         }
+
+        &:focus {
+            outline: none; 
+            border: 2px solid $orange;
+        }
     }
 
     #dateSelector {
@@ -156,6 +157,11 @@ a {
         @include input-style(); 
         display: inline-block;
         padding: 0 12px;
+
+        &:focus {
+            outline: none; 
+            border: 2px solid $orange;
+        }
     }
 
     button {
@@ -180,6 +186,16 @@ a {
 
     p {
         text-shadow: 0 0 5px #000; 
+    }
+}
+
+//if user is not using tab key, don't show border. 
+.no-focus-outline {
+    #form {
+        input:focus, 
+        select:focus {
+            border: none; 
+        }
     }
 }
 
