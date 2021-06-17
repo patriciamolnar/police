@@ -19,6 +19,13 @@ $(document).ready(function() {
         text : year
     }));
 });
+
+  //removing no-focus-outline class on tab
+  $(document.body).keydown(function(e) {
+    if (e.key === 'Tab') {
+      document.documentElement.classList.remove('no-focus-outline');
+    }
+  });
   
   //Global Variables
   var clrs = [
