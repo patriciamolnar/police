@@ -27,41 +27,42 @@
   </head>
 
   <body>
-	<div id="content">
+	<main id="content">
 		<div id="container">
 			<div class="header">
 				<h1 class="heading">Police stop and search results in your area</h1>
 			</div>
 			
-			<div id="form">
+			<div id="form-container">
 				<div id="error" class="error"></div>
-				<label for="postcode">Type in UK Postcode:</label>
-				<input type="text" name="postcode" id="postcode" placeholder="Your postcode..."><br>
+				<form>
+					<label for="postcode">Type in UK Postcode:</label>
+					<input type="text" name="postcode" id="postcode" placeholder="Your postcode..."><br>
 
-				<label for="month">Choose a month and a year: *</label>
-				<div id="dateSelector">
-					<select name="month" id="month">
-						<option value="01">January</option>
-						<option value="02">February</option>
-						<option value="03">March</option>
-						<option value="04">April</option>
-						<option value="05">May</option>
-						<option value="06">June</option>
-						<option value="07">July</option>
-						<option value="08">August</option>
-						<option value="09">September</option>
-						<option value="10">Oktober</option>
-						<option value="11">November</option>
-						<option value="12">December</option>
-					</select>
-	
-					<select name="year" id="year">
-						<!-- options dynamically added based on current year -->
-					</select>
+					<label for="month">Choose a month and a year: *</label>
+					<div id="dateSelector">
+						<select name="month" id="month">
+							<option value="01">January</option>
+							<option value="02">February</option>
+							<option value="03">March</option>
+							<option value="04">April</option>
+							<option value="05">May</option>
+							<option value="06">June</option>
+							<option value="07">July</option>
+							<option value="08">August</option>
+							<option value="09">September</option>
+							<option value="10">Oktober</option>
+							<option value="11">November</option>
+							<option value="12">December</option>
+						</select>
+		
+						<select name="year" id="year">
+							<!-- options dynamically added based on current year -->
+						</select>
+					</div>
 
-				</div>
-
-				<button type="button">Search</button>
+					<button type="button">Search</button>
+				</form>
 				<p class="small">*Police only supply data for 3 years, with a 2 months delay.</p>
 			</div>
 
@@ -83,7 +84,7 @@
 		</div>
 
 		<div class="push"></div>
-	</div>
+	</main>
 
 	<footer class="footer">
 		<a href="https://postcodes.io/" target="_blank">Postcode API</a> -
