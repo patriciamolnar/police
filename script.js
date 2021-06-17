@@ -93,10 +93,19 @@ $(document).ready(function() {
 
   //event listener: button click/tap
   var $button = $('button'); 
+
   $button.on(
     {click: getLatLon}, 
     {tap: getLatLon}
   )
+
+  function showLoading() {
+    $button.text('Loading...');
+  }
+
+  function hideLoading() {
+    $button.text('Search');
+  }
 
   //get URL with postcode
   function getURL() { 
@@ -106,6 +115,8 @@ $(document).ready(function() {
 
   //call postcode API for lat lon
   function getLatLon() {
+    //show loading para
+    showLoading(); 
 
     //resetting both containers from previous map calls
     if($mapContainer.html() != " ") {
@@ -134,6 +145,7 @@ $(document).ready(function() {
         $inputField.addClass('error');
         $inputField.addClass('error-border');
         $error.html("<span class='background'><span class='exclaim'>!</span> Invalid postcode</span>");
+        hideLoading();
         $button.blur();
       } 
     });
@@ -158,6 +170,7 @@ $(document).ready(function() {
             $inputField.addClass('error');
             $inputField.addClass('error-border');
             $error.html("<span class='background'><span class='exclaim'>!</span> There is no data for your postcode</span>");
+            hideLoading();
             $button.blur();
           } else {
             $inputField.removeClass('error');
@@ -176,6 +189,7 @@ $(document).ready(function() {
         $inputField.addClass('error-border');
         $error.html("<span class='background'><span class='exclaim'>!</span> No result for your selected date." + 
         " Data is only available for 3 years with a 2 month delay.</span>");
+        hideLoading();
         $button.blur();
       } 
     });
@@ -354,6 +368,7 @@ $(document).ready(function() {
     getInfo(data);
 
     //remove :focus styling from button so visitors know the button worked.
+    hideLoading();
     $button.blur(); 
   
   }
