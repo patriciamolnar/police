@@ -96,7 +96,7 @@ a {
     @include border-rad(); 
 }
 
-#form {
+#form-container {
     position: relative; 
     margin: 0 auto;
     padding: 1.5em 0 1em;
@@ -191,7 +191,7 @@ a {
 
 //if user is not using tab key, don't show border. 
 .no-focus-outline {
-    #form {
+    #form-container {
         input:focus, 
         select:focus {
             border: none; 
@@ -284,11 +284,11 @@ footer {
 
 
 @media only screen and (min-width: 800px) {
-    #form {
+    #form-container {
         min-height: 390px;
     }
 
-    #container input, #container label, #form #dateSelector {
+    #container input, #container label, #dateSelector {
         width: 40%;
     }
 
@@ -337,8 +337,7 @@ footer {
         border-bottom: 1px solid darken($orange, 10%);
     }
 
-    #form {
-
+    #form-container {
         button:hover {
             background-color: darken($orange, 10%);
             border: 1px solid darken($orange, 10%); 
