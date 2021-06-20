@@ -119,74 +119,85 @@ a {
         opacity: 0.7; 
     }
 
-    label, input {
-        display: block;
-        @include marg(0);
-    }
+    form {
+        width: 80%; 
+        margin: 0 auto; 
 
-    label {
-        @include font(1.3rem); 
-        text-shadow: 0 0 5px #000; 
-    }
-
-    input {
-        @include input-style(); 
-        @include marg();
-        padding: 12px; 
-
-        &::placeholder {
-            color: $navy;
+        label, input {
+            display: block;
+            @include marg(0);
         }
+    
+        label {
+            @include font(1.3rem); 
+            text-shadow: 0 0 5px #000; 
+        }
+    
+        input {
+            @include input-style(); 
+            @include marg();
+            padding: 12px; 
+            width: 100%; 
+    
+            &::placeholder {
+                color: $navy;
+            }
+    
+            &:focus {
+                outline: none; 
+                border: 2px solid $orange;
+            }
+        }
+    
+        #dateSelector {
+            display: inline-grid; 
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 5px;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
 
+            select {
+                @include input-style(); 
+                display: inline-block;
+                padding: 0 12px;
+        
+                &:focus {
+                    outline: none; 
+                    border: 2px solid $orange;
+                }
+            }
+        }
+    
+        
+        button {
+            display: block;
+            color: darken($navy, 20%);
+            background-color: $orange; 
+            padding: 0.5em 1.5em; 
+            border: 1px solid $orange;
+            border-radius: 1.5em;
+            @include marg(1em); 
+            @include font();
+            font-family: $font;
+            font-weight: 700;
+            z-index: 10; 
+    
         &:focus {
+            background-color: $sky;
+            border: 1px solid $sky; 
             outline: none; 
-            border: 2px solid $orange;
+            }
+        }
+    
+        p {
+            text-shadow: 0 0 5px #000; 
         }
     }
 
-    #dateSelector {
-        display: inline-grid; 
-        grid-template-columns: 1fr 1fr;
-        grid-gap: 5px;
-        justify-content: center;
-        align-items: center;
-        width: 45%;
-    }
+    
 
-    select {
-        @include input-style(); 
-        display: inline-block;
-        padding: 0 12px;
-
-        &:focus {
-            outline: none; 
-            border: 2px solid $orange;
-        }
-    }
-
-    button {
-        display: block;
-        color: darken($navy, 20%);
-        background-color: $orange; 
-        padding: 0.5em 1.5em; 
-        border: 1px solid $orange;
-        border-radius: 1.5em;
-        @include marg(1em); 
-        @include font();
-        font-family: $font;
-        font-weight: 700;
-        z-index: 10; 
-
-    &:focus {
-        background-color: $sky;
-        border: 1px solid $sky; 
-        outline: none; 
-        }
-    }
-
-    p {
-        text-shadow: 0 0 5px #000; 
-    }
+    
 }
 
 //if user is not using tab key, don't show border. 
@@ -275,21 +286,13 @@ footer {
     height: 2.5rem;
 }
 
-
-@media only screen and (min-width: 500px) {
-    #postcode {
-        width: 45%;
-    }
-}
-
-
 @media only screen and (min-width: 800px) {
     #form-container {
         min-height: 390px;
-    }
 
-    #container input, #container label, #dateSelector {
-        width: 40%;
+        form {
+            width: 50%; 
+        }
     }
 
     #mapContainer, #infoContainer, #last, footer {
@@ -315,6 +318,11 @@ footer {
 }
 
 @media only screen and (min-width: 1200px) {
+    #form-container {
+        form {
+            width: 40%; 
+        }
+    }
       
     #mapContainer, #infoContainer, #last, footer {
         padding-left: 5em; 
