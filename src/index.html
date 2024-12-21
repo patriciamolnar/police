@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" class="no-focus-outline">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Police stop & search results for your area</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Look up police stop and search results based on your UK Postcode."
+    />
+
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.png" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- chart.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="script.js"></script>
+  </head>
+
+  <body>
+    <main id="content">
+      <div id="container">
+        <div class="header">
+          <h1 class="heading">Police stop and search results for your area</h1>
+        </div>
+
+        <div id="form-container">
+          <div id="error" class="error"></div>
+          <form>
+            <label for="postcode">UK Postcode*</label>
+            <input
+              type="text"
+              name="postcode"
+              id="postcode"
+              placeholder="e.g. SW1A 1AA"
+            />
+
+            <label for="month">Choose a month*</label>
+            <select name="month" id="month">
+              <option value="01">January</option>
+              <option value="02">February</option>
+              <option value="03">March</option>
+              <option value="04">April</option>
+              <option value="05">May</option>
+              <option value="06">June</option>
+              <option value="07">July</option>
+              <option value="08">August</option>
+              <option value="09">September</option>
+              <option value="10">Oktober</option>
+              <option value="11">November</option>
+              <option value="12">December</option>
+            </select>
+
+            <label for="year">Choose a year*</label>
+            <select name="year" id="year">
+              <!-- options dynamically added based on current year -->
+            </select>
+
+            <button type="button">Search</button>
+          </form>
+          <p class="small">
+            *Police only supply data for 3 years, with a 2 months delay.
+          </p>
+        </div>
+
+        <div id="mapContainer"></div>
+        <div id="infoContainer"></div>
+      </div>
+
+      <div id="last">
+        <p>
+          Please note: For some postcodes the result will be more extensive than
+          for others. For example, police conduct many stop and searches in busy
+          areas in bigger cities such as London. Rural areas or quieter
+          locations on the other hand will have only a few per month or none.
+          <br /><br />
+          The locations of the stop and searches showing up for your postcode
+          have not been conducted exactly at that point. The police only supply
+          approximate data on where the stop and search took place to protect
+          indivuduals' identity. To find out more, please read their explanation
+          on
+          <a
+            href="https://data.police.uk/about/#location-anonymisation"
+            target="_blank"
+            >Location Anonymisation</a
+          >
+        </p>
+      </div>
+
+      <div class="push"></div>
+    </main>
+
+    <footer class="footer">
+      <a href="https://postcodes.io/" target="_blank">Postcode API</a> -
+      <a
+        href="https://data.police.uk/docs/method/stops-at-location/"
+        target="_blank"
+        >Police API</a
+      >
+      - <a href="https://pmcoding.co.uk/">pmCoding</a> -
+      <a href="https://patriciamolnar.com/">Patricia Molnar Portfolio</a>
+    </footer>
+  </body>
+</html>
