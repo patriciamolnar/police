@@ -5,8 +5,14 @@ export class State {
   #month: string = "01";
   #year: number = new Date().getFullYear();
 
+  getPostcode() {
+    return this.#postcode;
+  }
+
   setPostcode(postcode: string) {
-    if (postcode.match(POSTCODE_REGEX)) {
+    const cleanedPostcode = postcode.replace(/\s/g, "");
+
+    if (cleanedPostcode.match(POSTCODE_REGEX)) {
       this.#postcode = postcode;
       return true;
     } else {

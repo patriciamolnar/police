@@ -1,3 +1,4 @@
+import { updateError } from "./utils/dom-updater";
 import { State } from "./utils/validators.utils";
 
 // initialising years
@@ -38,13 +39,11 @@ document.body.addEventListener("keydown", (e) => {
   }
 });
 
-//todo: refactor
 postcodeField?.addEventListener("blur", (e) => {
-  const postcode = e.target as HTMLInputElement;
-  const value = postcode.value.replace(/\s/g, "");
-  const isValidPostcode = state.setPostcode(value);
-  console.log(isValidPostcode);
-  // validatePostcode(postcodeField, errorDiv, value);
+  const isValidPostcode = state.setPostcode(
+    (e.target as HTMLInputElement).value
+  );
+  updateError(errorDiv, postcodeField, "Invalid postcode", isValidPostcode);
 });
 
 searchBtn?.addEventListener("click", (e) => {
