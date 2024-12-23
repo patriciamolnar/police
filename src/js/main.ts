@@ -1,5 +1,15 @@
-import { updateError } from "./utils/dom-updater";
-import { State } from "./utils/validators.utils";
+import { fetchResult } from "./utils/api.utils";
+import { setButtonState, updateError } from "./utils/dom-updater.utils";
+import { State } from "./utils/state.class";
+
+// DOM elements
+const mapContainer = document.querySelector("#mapContainer");
+const infoContainer = document.querySelector("#infoContainer");
+const postcodeField = document.querySelector("#postcode");
+const monthSelect = document.querySelector("#month");
+const yearSelect = document.querySelector("#year");
+const searchBtn = document.querySelector("#search");
+const errorDiv = document.querySelector("#error");
 
 // initialising years
 (() => {
@@ -10,7 +20,6 @@ import { State } from "./utils/validators.utils";
     years.push(currentYear - i);
   }
 
-  const yearSelect = document.querySelector("#year");
   if (!yearSelect) return;
 
   years.forEach((year) => {
@@ -24,12 +33,19 @@ import { State } from "./utils/validators.utils";
 
 const state = new State();
 
-// DOM elements
-const mapContainer = document.querySelector("#mapContainer");
-const infoContainer = document.querySelector("#infoContainer");
-const postcodeField = document.querySelector("#postcode");
-const errorDiv = document.querySelector("#error");
-const searchBtn = document.querySelector("#search");
+const resetContainers = () => {
+  if (!mapContainer || !infoContainer) return;
+
+  mapContainer.innerHTML = "";
+  infoContainer.innerHTML = "";
+};
+
+const onSearch = async () => {
+  setButtonState(searchBtn, "Loading...");
+  resetContainers();
+  const data = await fetchResult(state, errorDiv, postcodeField);
+  console.log(data);
+};
 
 // event listeners
 //todo: is there a better way to do this?
@@ -46,8 +62,13 @@ postcodeField?.addEventListener("blur", (e) => {
   updateError(errorDiv, postcodeField, "Invalid postcode", isValidPostcode);
 });
 
-searchBtn?.addEventListener("click", (e) => {
-  e.preventDefault();
+monthSelect?.addEventListener("change", (e) => {
+  state.setMonth((e.target as HTMLSelectElement).value);
 });
 
-// const queryData = async () => {};
+yearSelect?.addEventListener("change", (e) => {
+  state.setYear((e.target as HTMLSelectElement).value);
+});
+
+searchBtn?.addEventListener("click", onSearch);
+searchBtn?.addEventListener("tap", onSearch);

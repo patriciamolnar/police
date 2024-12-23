@@ -19,4 +19,24 @@ export class State {
       return false;
     }
   }
+
+  getMonth() {
+    return this.#month;
+  }
+  setMonth(monthStr: string) {
+    const month = parseInt(monthStr);
+    if (month < 1 || month > 12) return;
+
+    this.#month = monthStr;
+  }
+
+  getYear() {
+    return this.#year;
+  }
+  setYear(yearStr: string) {
+    const year = parseInt(yearStr);
+    const currentYear = new Date().getFullYear();
+    if (currentYear - year > 3) return;
+    this.#year = year;
+  }
 }

@@ -16,3 +16,9 @@ export const updateError = (
     errorDiv.innerHTML = `<span class='background'><span class='exclaim'>!</span>${message}</span>`;
   }
 };
+
+export const setButtonState = (button: Element | null, buttonText: string) => {
+  if (!button) return;
+
+  button.textContent = buttonText;
+};

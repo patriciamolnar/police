@@ -1,9 +1,6 @@
 export interface PostcodeData {
-  status: number;
-  result: {
-    latitude: number;
-    longitude: number;
-  };
+  latitude: number;
+  longitude: number;
 }
 
 export interface PoliceData {

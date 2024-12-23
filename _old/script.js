@@ -94,15 +94,15 @@ $(document).ready(function () {
   //event listener: button click/tap
   // var $button = $("button");
 
-  $button.on({ click: getLatLon }, { tap: getLatLon });
+  // $button.on({ click: getLatLon }, { tap: getLatLon });
 
-  function showLoading() {
-    $button.text("Loading...");
-  }
+  // function showLoading() {
+  //   $button.text("Loading...");
+  // }
 
-  function hideLoading() {
-    $button.text("Search");
-  }
+  // function hideLoading() {
+  //   $button.text("Search");
+  // }
 
   // //get URL with postcode
   // function getURL() {
