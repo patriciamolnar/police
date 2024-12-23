@@ -1,5 +1,7 @@
+import { PoliceData } from "./_models";
 import { fetchResult } from "./utils/api.utils";
-import { setButtonState, updateError } from "./utils/dom-updater.utils";
+import { formatData } from "./utils/data-formatter.utils";
+import { setButtonState, updatePostcodeError } from "./utils/dom-updater.utils";
 import { State } from "./utils/state.class";
 
 // DOM elements
@@ -44,7 +46,12 @@ const onSearch = async () => {
   setButtonState(searchBtn, "Loading...");
   resetContainers();
   const data = await fetchResult(state, errorDiv, postcodeField);
-  console.log(data);
+  if (data) {
+    const formattedData = formatData(data);
+    console.log(formattedData);
+  }
+  setButtonState(searchBtn, "Search");
+  //remove focus from button
 };
 
 // event listeners
@@ -59,7 +66,7 @@ postcodeField?.addEventListener("blur", (e) => {
   const isValidPostcode = state.setPostcode(
     (e.target as HTMLInputElement).value
   );
-  updateError(errorDiv, postcodeField, "Invalid postcode", isValidPostcode);
+  updatePostcodeError(errorDiv, postcodeField, isValidPostcode);
 });
 
 monthSelect?.addEventListener("change", (e) => {

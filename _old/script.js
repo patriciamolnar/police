@@ -111,158 +111,158 @@ $(document).ready(function () {
   // }
 
   //call postcode API for lat lon
-  function getLatLon() {
-    //show loading para
-    showLoading();
+  // function getLatLon() {
+  //   //show loading para
+  //   showLoading();
 
-    //resetting both containers from previous map calls
-    if ($mapContainer.html() != " ") {
-      $mapContainer.html("");
-    }
+  //   //resetting both containers from previous map calls
+  //   if ($mapContainer.html() != " ") {
+  //     $mapContainer.html("");
+  //   }
 
-    if ($infoContainer.html() != " ") {
-      $infoContainer.html("").css("padding-bottom", "0");
-    }
+  //   if ($infoContainer.html() != " ") {
+  //     $infoContainer.html("").css("padding-bottom", "0");
+  //   }
 
-    var url = getURL();
+  //   var url = getURL();
 
-    $.ajax({
-      url: url,
-      contentType: "application/json",
-      dataType: "json",
-      success: function (obj) {
-        //if success call police API
-        var lon = obj.result.longitude;
-        var lat = obj.result.latitude;
-        getData(lat, lon);
-      },
-      error: function (xhr) {
-        $inputField.addClass("error");
-        $inputField.addClass("error-border");
-        $error.html(
-          "<span class='background'><span class='exclaim'>!</span> Invalid postcode</span>"
-        );
-        hideLoading();
-        $button.blur();
-      },
-    });
-  }
+  //   $.ajax({
+  //     url: url,
+  //     contentType: "application/json",
+  //     dataType: "json",
+  //     success: function (obj) {
+  //       //if success call police API
+  //       var lon = obj.result.longitude;
+  //       var lat = obj.result.latitude;
+  //       getData(lat, lon);
+  //     },
+  //     error: function (xhr) {
+  //       $inputField.addClass("error");
+  //       $inputField.addClass("error-border");
+  //       $error.html(
+  //         "<span class='background'><span class='exclaim'>!</span> Invalid postcode</span>"
+  //       );
+  //       hideLoading();
+  //       $button.blur();
+  //     },
+  //   });
+  // }
 
   //call police API
-  function getData(lat, lon) {
-    var lat = lat;
-    var lon = lon;
-    var month = $("#month").val();
-    var year = $("#year").val();
+  // function getData(lat, lon) {
+  //   var lat = lat;
+  //   var lon = lon;
+  //   var month = $("#month").val();
+  //   var year = $("#year").val();
 
-    var url =
-      "https://data.police.uk/api/stops-street?lat=" +
-      lat +
-      "&lng=" +
-      lon +
-      "&date=" +
-      year +
-      "-" +
-      month;
+  //   var url =
+  //     "https://data.police.uk/api/stops-street?lat=" +
+  //     lat +
+  //     "&lng=" +
+  //     lon +
+  //     "&date=" +
+  //     year +
+  //     "-" +
+  //     month;
 
-    $.ajax({
-      url: url,
-      type: "GET",
-      //contentType: "application/json",
-      dataType: "json",
-      success: function (obj2) {
-        if (obj2.length === 0) {
-          //if there is no stop and search data
-          $inputField.addClass("error");
-          $inputField.addClass("error-border");
-          $error.html(
-            "<span class='background'><span class='exclaim'>!</span> There is no data for your postcode</span>"
-          );
-          hideLoading();
-          $button.blur();
-        } else {
-          $inputField.removeClass("error");
-          $inputField.removeClass("error-border");
-          $error.html("");
-          var arr = [];
-          $.each(obj2, function (i, value) {
-            arr[i] = [value.object_of_search, value.outcome_object.name];
-          });
-          formatData(arr);
-        }
-      },
-      error: function (xhr) {
-        $inputField.addClass("error");
-        $inputField.addClass("error-border");
-        $error.html(
-          "<span class='background'><span class='exclaim'>!</span> No result for your selected date." +
-            " Data is only available for 3 years with a 2 month delay.</span>"
-        );
-        hideLoading();
-        $button.blur();
-      },
-    });
-  }
+  //   $.ajax({
+  //     url: url,
+  //     type: "GET",
+  //     //contentType: "application/json",
+  //     dataType: "json",
+  //     success: function (obj2) {
+  //       if (obj2.length === 0) {
+  //         //if there is no stop and search data
+  //         $inputField.addClass("error");
+  //         $inputField.addClass("error-border");
+  //         $error.html(
+  //           "<span class='background'><span class='exclaim'>!</span> There is no data for your postcode</span>"
+  //         );
+  //         hideLoading();
+  //         $button.blur();
+  //       } else {
+  //         $inputField.removeClass("error");
+  //         $inputField.removeClass("error-border");
+  //         $error.html("");
+  //         var arr = [];
+  //         $.each(obj2, function (i, value) {
+  //           arr[i] = [value.object_of_search, value.outcome_object.name];
+  //         });
+  //         formatData(arr);
+  //       }
+  //     },
+  //     error: function (xhr) {
+  //       $inputField.addClass("error");
+  //       $inputField.addClass("error-border");
+  //       $error.html(
+  //         "<span class='background'><span class='exclaim'>!</span> No result for your selected date." +
+  //           " Data is only available for 3 years with a 2 month delay.</span>"
+  //       );
+  //       hideLoading();
+  //       $button.blur();
+  //     },
+  //   });
+  // }
 
   //format Data for map
   function formatData(arr) {
     //data storage
-    var result = [[], [], [], []];
+    // var result = [[], [], [], []];
 
-    //getting x-Axis values & setting up y values.
-    $.each(arr, function (i, val) {
-      if ($.inArray(val[0], result[0]) === -1) {
-        result[0][result[0].length] = val[0];
+    // //getting x-Axis values & setting up y values.
+    // $.each(arr, function (i, val) {
+    //   if ($.inArray(val[0], result[0]) === -1) {
+    //     result[0][result[0].length] = val[0];
 
-        //filling y-Axis arrays with 0s for future calculations.
-        result[1][result[1].length] = 0;
-        result[2][result[2].length] = 0;
-        result[3][result[3].length] = 0;
-      }
-    });
+    //     //filling y-Axis arrays with 0s for future calculations.
+    //     result[1][result[1].length] = 0;
+    //     result[2][result[2].length] = 0;
+    //     result[3][result[3].length] = 0;
+    //   }
+    // });
 
-    //Getting y-Axis data
-    $.each(arr, function (i, val) {
-      //for each crime type count how many arrests (y1)
-      var $num = $.inArray(val[0], result[0]);
-      result[1][$num]++;
+    // //Getting y-Axis data
+    // $.each(arr, function (i, val) {
+    //   //for each crime type count how many arrests (y1)
+    //   var $num = $.inArray(val[0], result[0]);
+    //   result[1][$num]++;
 
-      //count arrests
-      if (/arrest/i.test(val[1])) {
-        result[2][$num]++;
-      }
+    //   //count arrests
+    //   if (/arrest/i.test(val[1])) {
+    //     result[2][$num]++;
+    //   }
 
-      //count other resolutions
-      if (!/arrest/i.test(val[1]) && !/no further action/i.test(val[1])) {
-        result[3][$num]++;
-      }
-    });
+    //   //count other resolutions
+    //   if (!/arrest/i.test(val[1]) && !/no further action/i.test(val[1])) {
+    //     result[3][$num]++;
+    //   }
+    // });
 
-    /* Merging stolen goods with 'Evidence of offences under the act*/
+    // /* Merging stolen goods with 'Evidence of offences under the act*/
 
-    if (result[0].indexOf("Evidence of offences under the Act") != -1) {
-      var indexOfEvidence = result[0].indexOf(
-        "Evidence of offences under the Act"
-      );
-      var indexOfTheaft = result[0].indexOf("Stolen goods");
+    // if (result[0].indexOf("Evidence of offences under the Act") != -1) {
+    //   var indexOfEvidence = result[0].indexOf(
+    //     "Evidence of offences under the Act"
+    //   );
+    //   var indexOfTheaft = result[0].indexOf("Stolen goods");
 
-      //remove "Evidence of offences under the Act" from x axis
-      result[0].splice(indexOfEvidence, 1);
+    //   //remove "Evidence of offences under the Act" from x axis
+    //   result[0].splice(indexOfEvidence, 1);
 
-      var numOfSearches = result[1][indexOfEvidence];
-      result[1][indexOfTheaft] += numOfSearches;
+    //   var numOfSearches = result[1][indexOfEvidence];
+    //   result[1][indexOfTheaft] += numOfSearches;
 
-      var numOfArrests = result[2][indexOfEvidence];
-      result[2][indexOfTheaft] += numOfArrests;
+    //   var numOfArrests = result[2][indexOfEvidence];
+    //   result[2][indexOfTheaft] += numOfArrests;
 
-      var numOfOther = result[3][indexOfEvidence];
-      result[3][indexOfTheaft] += numOfOther;
+    //   var numOfOther = result[3][indexOfEvidence];
+    //   result[3][indexOfTheaft] += numOfOther;
 
-      //after merging values remove the count of "Evidence of offences under the act" from y axis"
-      result[1].splice(indexOfEvidence, 1);
-      result[2].splice(indexOfEvidence, 1);
-      result[3].splice(indexOfEvidence, 1);
-    }
+    //   //after merging values remove the count of "Evidence of offences under the act" from y axis"
+    //   result[1].splice(indexOfEvidence, 1);
+    //   result[2].splice(indexOfEvidence, 1);
+    //   result[3].splice(indexOfEvidence, 1);
+    // }
 
     //Renaming Labels to be user-friendlier
     $.each(result[0], function (i, val) {

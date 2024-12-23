@@ -33,3 +33,10 @@ export const LABEL_DESCRIPTIONS = {
   Other:
     '<span class="label-title">Other:</span>&nbsp; Reason was not specified.',
 };
+
+export const ERRORS = {
+  postcode: "Invalid postcode",
+  no_data_for_postcode: "There is no data for your postcode.",
+  no_data_for_date:
+    "No result for your selected date. Data is only available for 3 years with a 2 month delay.",
+};

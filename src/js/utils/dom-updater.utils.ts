@@ -1,8 +1,10 @@
-export const updateError = (
+import { ERRORS } from "../_static";
+
+export const updatePostcodeError = (
   errorDiv: Element | null,
   element: Element | null,
-  message: string,
-  isValid: boolean
+  isValid: boolean,
+  message = ERRORS.postcode
 ) => {
   if (!element || !errorDiv) return;
 
@@ -13,6 +15,20 @@ export const updateError = (
   } else {
     element.classList.add("error");
     element.classList.add("error-border");
+    errorDiv.innerHTML = `<span class='background'><span class='exclaim'>!</span>${message}</span>`;
+  }
+};
+
+export const updateError = (
+  errorDiv: Element | null,
+  message: string,
+  isValid: boolean
+) => {
+  if (!errorDiv) return;
+
+  if (isValid) {
+    errorDiv.textContent = "";
+  } else {
     errorDiv.innerHTML = `<span class='background'><span class='exclaim'>!</span>${message}</span>`;
   }
 };

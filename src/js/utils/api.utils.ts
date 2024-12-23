@@ -1,5 +1,6 @@
 import { PoliceData, PostcodeData } from "../_models";
-import { updateError } from "./dom-updater.utils";
+import { ERRORS } from "../_static";
+import { updateError, updatePostcodeError } from "./dom-updater.utils";
 import { State } from "./state.class";
 
 const getLatLong = async (postcode: string): Promise<PostcodeData | null> => {
@@ -18,7 +19,7 @@ const getLatLong = async (postcode: string): Promise<PostcodeData | null> => {
 const getPoliceData = async (
   loc: PostcodeData,
   state: State
-): Promise<PoliceData | null> => {
+): Promise<PoliceData[] | null> => {
   const url = `https://data.police.uk/api/stops-street?lat=${
     loc.latitude
   }&lng=${loc.longitude}&date=${state.getYear()}-${state.getMonth()}`;
@@ -39,10 +40,18 @@ export const fetchResult = async (
 ) => {
   const location = await getLatLong(state.getPostcode());
   if (!location) {
-    updateError(errorDiv, postcodeField, "Invalid postcode", false);
+    updatePostcodeError(errorDiv, postcodeField, false);
     return;
   }
 
   const searches = await getPoliceData(location, state);
+  if (!searches) {
+    updateError(errorDiv, ERRORS.no_data_for_date, false);
+  } else if (searches.length === 0) {
+    updateError(errorDiv, ERRORS.no_data_for_postcode, false);
+  } else {
+    updateError(errorDiv, "", true);
+  }
+
   return searches;
 };
