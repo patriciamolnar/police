@@ -6,6 +6,7 @@ export const formatData = (data: PoliceData[]) => {
   const yAxis = sortDataForY(reducedData, xAxis);
   const merged = mergingStolenGood(yAxis);
   const renamed = renameLabels(merged);
+  console.log(renamed);
   return splitLabels(renamed);
 };
 
@@ -72,7 +73,7 @@ const mergingStolenGood = (result: FormattedData) => {
 };
 
 const renameLabels = (result: FormattedData) => {
-  result[0].map((item) => {
+  const labels = result[0].map((item) => {
     if (item == null) {
       return "Other";
     } else if (item == "Firearms") {
@@ -87,6 +88,8 @@ const renameLabels = (result: FormattedData) => {
 
     return item;
   });
+
+  result[0] = labels;
 
   return result;
 };

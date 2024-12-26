@@ -9,7 +9,7 @@ import {
 import { State } from "./utils/state.class";
 
 // DOM elements
-const mapContainer = document.querySelector("#mapContainer");
+const canvas = document.querySelector("canvas") as HTMLCanvasElement;
 const infoContainer = document.querySelector("#infoContainer");
 const postcodeField = document.querySelector("#postcode");
 const monthSelect = document.querySelector("#month");
@@ -40,9 +40,7 @@ const errorDiv = document.querySelector("#error");
 const state = new State();
 
 const resetContainers = () => {
-  if (!mapContainer || !infoContainer) return;
-
-  mapContainer.innerHTML = "";
+  if (!infoContainer) return;
   infoContainer.innerHTML = "";
 };
 
@@ -53,7 +51,7 @@ const onSearch = async () => {
   if (data) {
     const formattedData = formatData(data);
     console.log(formattedData);
-    displayMap(formattedData);
+    displayMap(formattedData, state, canvas);
   }
   setButtonState(searchBtn, "Search");
   //remove focus from button

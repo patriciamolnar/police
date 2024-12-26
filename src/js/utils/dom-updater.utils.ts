@@ -1,6 +1,7 @@
 import Chart from "chart.js/auto";
 import { FormattedData } from "../_models";
 import { COLORS, ERRORS } from "../_static";
+import { State } from "./state.class";
 
 export const updatePostcodeError = (
   errorDiv: Element | null,
@@ -41,16 +42,20 @@ export const setButtonState = (button: Element | null, buttonText: string) => {
   button.textContent = buttonText;
 };
 
-export const displayMap = (data: FormattedData) => {
-  if (!data) return;
+export const displayMap = (
+  data: FormattedData,
+  state: State,
+  canvas: HTMLCanvasElement
+) => {
+  if (!data || !canvas) return;
 
-  const canvas = document.getElementById("mapContainer") as HTMLCanvasElement;
+  if (state.chart) state.chart.destroy();
 
-  if (window.innerWidth < 900) {
+  if (window.innerWidth > 900) {
     canvas.height = 500;
   }
 
-  new Chart(canvas, {
+  state.chart = new Chart(canvas, {
     type: "bar",
     data: {
       labels: data[0],
@@ -58,17 +63,20 @@ export const displayMap = (data: FormattedData) => {
         {
           label: "# of Searches",
           data: data[1],
-          backgroundColor: COLORS,
+          backgroundColor: COLORS[0],
+          borderWidth: 1,
         },
         {
           label: "# of arrests",
           data: data[2],
-          backgroundColor: COLORS,
+          backgroundColor: COLORS[1],
+          borderWidth: 1,
         },
         {
           label: "# of other resolutions",
           data: data[3],
-          backgroundColor: COLORS,
+          backgroundColor: COLORS[2],
+          borderWidth: 1,
         },
       ],
     },
