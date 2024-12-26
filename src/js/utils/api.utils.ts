@@ -41,7 +41,7 @@ export const fetchResult = async (
   const location = await getLatLong(state.getPostcode());
   if (!location) {
     updatePostcodeError(errorDiv, postcodeField, false);
-    return;
+    return null;
   }
 
   const searches = await getPoliceData(location, state);

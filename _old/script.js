@@ -208,87 +208,72 @@ $(document).ready(function () {
   function formatData(arr) {
     //data storage
     // var result = [[], [], [], []];
-
     // //getting x-Axis values & setting up y values.
     // $.each(arr, function (i, val) {
     //   if ($.inArray(val[0], result[0]) === -1) {
     //     result[0][result[0].length] = val[0];
-
     //     //filling y-Axis arrays with 0s for future calculations.
     //     result[1][result[1].length] = 0;
     //     result[2][result[2].length] = 0;
     //     result[3][result[3].length] = 0;
     //   }
     // });
-
     // //Getting y-Axis data
     // $.each(arr, function (i, val) {
     //   //for each crime type count how many arrests (y1)
     //   var $num = $.inArray(val[0], result[0]);
     //   result[1][$num]++;
-
     //   //count arrests
     //   if (/arrest/i.test(val[1])) {
     //     result[2][$num]++;
     //   }
-
     //   //count other resolutions
     //   if (!/arrest/i.test(val[1]) && !/no further action/i.test(val[1])) {
     //     result[3][$num]++;
     //   }
     // });
-
     // /* Merging stolen goods with 'Evidence of offences under the act*/
-
     // if (result[0].indexOf("Evidence of offences under the Act") != -1) {
     //   var indexOfEvidence = result[0].indexOf(
     //     "Evidence of offences under the Act"
     //   );
     //   var indexOfTheaft = result[0].indexOf("Stolen goods");
-
     //   //remove "Evidence of offences under the Act" from x axis
     //   result[0].splice(indexOfEvidence, 1);
-
     //   var numOfSearches = result[1][indexOfEvidence];
     //   result[1][indexOfTheaft] += numOfSearches;
-
     //   var numOfArrests = result[2][indexOfEvidence];
     //   result[2][indexOfTheaft] += numOfArrests;
-
     //   var numOfOther = result[3][indexOfEvidence];
     //   result[3][indexOfTheaft] += numOfOther;
-
     //   //after merging values remove the count of "Evidence of offences under the act" from y axis"
     //   result[1].splice(indexOfEvidence, 1);
     //   result[2].splice(indexOfEvidence, 1);
     //   result[3].splice(indexOfEvidence, 1);
     // }
-
     //Renaming Labels to be user-friendlier
-    $.each(result[0], function (i, val) {
-      if (val == null) {
-        result[0][i] = "Other";
-      }
-      if (val === "Firearms") {
-        result[0][i] = "Guns";
-      }
-      if (val === "Anything to threaten or harm anyone") {
-        result[0][i] = "Threatening conduct";
-      }
-      if (val === "Articles for use in criminal damage") {
-        result[0][i] = "Criminal damage";
-      }
-      if (val === "Goods on which duty has not been paid etc.") {
-        result[0][i] = "Duty not paid";
-      }
-    });
-
-    //Breaking up the x-axis names into arrays, so they fit without rotation:
-    $.each(result[0], function (i, val) {
-      result[0][i] = val.split(" ");
-    });
-
-    getChart(result);
+    // $.each(result[0], function (i, val) {
+    //   if (val == null) {
+    //     result[0][i] = "Other";
+    //   }
+    //   if (val === "Firearms") {
+    //     result[0][i] = "Guns";
+    //   }
+    //   if (val === "Anything to threaten or harm anyone") {
+    //     result[0][i] = "Threatening conduct";
+    //   }
+    //   if (val === "Articles for use in criminal damage") {
+    //     result[0][i] = "Criminal damage";
+    //   }
+    //   if (val === "Goods on which duty has not been paid etc.") {
+    //     result[0][i] = "Duty not paid";
+    //   }
+    // });
+    // //Breaking up the x-axis names into arrays, so they fit without rotation:
+    // $.each(result[0], function (i, val) {
+    //   result[0][i] = val.split(" ");
+    // });
+    // getChart(result);
   }
 
   function getChart(arr) {

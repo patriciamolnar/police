@@ -1,7 +1,11 @@
 import { PoliceData } from "./_models";
 import { fetchResult } from "./utils/api.utils";
 import { formatData } from "./utils/data-formatter.utils";
-import { setButtonState, updatePostcodeError } from "./utils/dom-updater.utils";
+import {
+  displayMap,
+  setButtonState,
+  updatePostcodeError,
+} from "./utils/dom-updater.utils";
 import { State } from "./utils/state.class";
 
 // DOM elements
@@ -49,6 +53,7 @@ const onSearch = async () => {
   if (data) {
     const formattedData = formatData(data);
     console.log(formattedData);
+    displayMap(formattedData);
   }
   setButtonState(searchBtn, "Search");
   //remove focus from button

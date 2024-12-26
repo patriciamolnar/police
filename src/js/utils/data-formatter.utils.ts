@@ -1,11 +1,4 @@
-import { PoliceData } from "../_models";
-
-type FormattedData = [
-  string[], // name of offence
-  number[], // number of searches
-  number[], // number of arrests
-  number[] // number of other outcomes
-];
+import { FormattedData, PoliceData } from "../_models";
 
 export const formatData = (data: PoliceData[]) => {
   const reducedData = reduceData(data);
