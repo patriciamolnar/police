@@ -1,6 +1,6 @@
 import Chart from "chart.js/auto";
 import { FormattedData } from "../_models";
-import { COLORS, ERRORS } from "../_static";
+import { COLORS, ERRORS, LABEL_DESCRIPTIONS } from "../_static";
 import { State } from "./state.class";
 
 export const updatePostcodeError = (
@@ -89,5 +89,53 @@ export const generateMap = (
         },
       },
     },
+  });
+};
+
+export const generateInfo = (
+  data: FormattedData,
+  infoContainer: HTMLElement | null
+) => {
+  if (!infoContainer) return;
+  infoContainer.innerHTML = "";
+  infoContainer.style.paddingBottom = "0";
+  const names = data[0];
+
+  names.forEach((name, i) => {
+    const div = document.createElement("div");
+    div.classList.add("infoDiv");
+
+    let description = "";
+    const desc = LABEL_DESCRIPTIONS[name as keyof typeof LABEL_DESCRIPTIONS];
+    if (desc) {
+      description = desc;
+    }
+
+    const content =
+      '<p class="title">' +
+      name +
+      "</p>" +
+      '<p><span class="square" style="background-color:' +
+      COLORS[0] +
+      '"></span>&nbspNumber of Stops and Searches: ' +
+      data[1][i] +
+      "</p>" +
+      '<p><span class="square" style="background-color:' +
+      COLORS[1] +
+      '"></span>&nbspNumber of Arrest:  ' +
+      data[2][i] +
+      "</p>" +
+      '<p><span class="square" style="background-color:' +
+      COLORS[2] +
+      '"></span>&nbspNumber of Other Resolutions: ' +
+      data[3][i] +
+      "</p>" +
+      '<p class="description">' +
+      description +
+      "</p>";
+
+    div.innerHTML = content;
+    infoContainer.appendChild(div);
+    infoContainer.style.paddingBottom = "2rem";
   });
 };

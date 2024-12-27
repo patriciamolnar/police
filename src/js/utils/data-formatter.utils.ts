@@ -6,7 +6,6 @@ export const formatData = (data: PoliceData[]) => {
   const yAxis = sortDataForY(reducedData, xAxis);
   const merged = mergingStolenGood(yAxis);
   const renamed = renameLabels(merged);
-  console.log(renamed);
   return splitLabels(renamed);
 };
 

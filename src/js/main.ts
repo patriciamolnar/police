@@ -1,6 +1,7 @@
 import { fetchResult } from "./utils/api.utils";
 import { formatData } from "./utils/data-formatter.utils";
 import {
+  generateInfo,
   generateMap,
   setButtonState,
   updatePostcodeError,
@@ -10,7 +11,7 @@ import "./../css/styles.css";
 
 // DOM elements
 const canvas = document.querySelector("canvas") as HTMLCanvasElement;
-const infoContainer = document.querySelector("#infoContainer");
+const infoContainer = document.querySelector("#infoContainer") as HTMLElement;
 const postcodeField = document.querySelector("#postcode");
 const monthSelect = document.querySelector("#month");
 const yearSelect = document.querySelector("#year");
@@ -56,8 +57,8 @@ const onSearch = async () => {
   const data = await fetchResult(state, errorDiv, postcodeField);
   if (data) {
     const formattedData = formatData(data);
-    console.log(formattedData);
     generateMap(formattedData, state, canvas);
+    generateInfo(formattedData, infoContainer);
     title?.classList.remove("hidden");
     otherRes?.classList.remove("hidden");
   }
