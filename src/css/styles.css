@@ -34,12 +34,12 @@ body {
 
 .header {
   width: 100%;
-  color: #fff;
   background-color: #0d1a26;
   padding: 1.5em 0 1.7em;
 }
 
 .heading {
+  color: #fff;
   font-size: 1.5rem;
   position: relative;
   display: inline-block;
@@ -57,11 +57,11 @@ body {
 }
 
 .heading::before {
-  top: -6px;
+  top: -7px;
 }
 
 .heading::after {
-  bottom: -8px;
+  bottom: -10px;
 }
 
 a {
@@ -234,8 +234,17 @@ p {
 }
 
 #mapContainer {
+  margin-top: 2em;
   background-color: var(--navy-dark);
   padding-right: 5px;
+}
+
+#mapContainer .heading {
+  margin-bottom: 1em;
+}
+
+.hidden {
+  display: none;
 }
 
 .other-resolution {

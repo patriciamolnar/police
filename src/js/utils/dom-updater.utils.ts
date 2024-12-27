@@ -42,7 +42,7 @@ export const setButtonState = (button: Element | null, buttonText: string) => {
   button.textContent = buttonText;
 };
 
-export const displayMap = (
+export const generateMap = (
   data: FormattedData,
   state: State,
   canvas: HTMLCanvasElement

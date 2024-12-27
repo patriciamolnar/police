@@ -1,7 +1,7 @@
 import { fetchResult } from "./utils/api.utils";
 import { formatData } from "./utils/data-formatter.utils";
 import {
-  displayMap,
+  generateMap,
   setButtonState,
   updatePostcodeError,
 } from "./utils/dom-updater.utils";
@@ -16,6 +16,9 @@ const monthSelect = document.querySelector("#month");
 const yearSelect = document.querySelector("#year");
 const searchBtn = document.querySelector("#search");
 const errorDiv = document.querySelector("#error");
+
+const title = document.querySelector("#title");
+const otherRes = document.querySelector("#otherResolution");
 
 // initialising years
 (() => {
@@ -42,6 +45,9 @@ const state = new State();
 const resetContainers = () => {
   if (!infoContainer) return;
   infoContainer.innerHTML = "";
+
+  title?.classList.add("hidden");
+  otherRes?.classList.add("hidden");
 };
 
 const onSearch = async () => {
@@ -51,7 +57,9 @@ const onSearch = async () => {
   if (data) {
     const formattedData = formatData(data);
     console.log(formattedData);
-    displayMap(formattedData, state, canvas);
+    generateMap(formattedData, state, canvas);
+    title?.classList.remove("hidden");
+    otherRes?.classList.remove("hidden");
   }
   setButtonState(searchBtn, "Search");
   //remove focus from button
