@@ -45,15 +45,14 @@ export const setButtonState = (button: Element | null, buttonText: string) => {
 export const generateMap = (
   data: FormattedData,
   state: State,
-  canvas: HTMLCanvasElement
+  canvas: HTMLCanvasElement,
+  map: HTMLElement
 ) => {
-  if (!data || !canvas) return;
+  if (!data || !canvas || !map) return;
 
   if (state.chart) state.chart.destroy();
 
-  if (window.innerWidth > 900) {
-    canvas.height = 500;
-  }
+  map.style.height = "500px";
 
   state.chart = new Chart(canvas, {
     type: "bar",
@@ -83,9 +82,24 @@ export const generateMap = (
     options: {
       indexAxis: "y",
       responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          labels: {
+            color: "#FFFFFF",
+          },
+        },
+      },
       scales: {
         x: {
           beginAtZero: true,
+          ticks: { color: "#FFFFFF" },
+          grid: { color: "#274e72" },
+        },
+        y: {
+          beginAtZero: true,
+          ticks: { color: "#FFFFFF" },
+          grid: { color: "#274e72" },
         },
       },
     },

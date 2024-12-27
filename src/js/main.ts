@@ -10,6 +10,7 @@ import { State } from "./utils/state.class";
 import "./../css/styles.css";
 
 // DOM elements
+const map = document.querySelector("#map") as HTMLElement;
 const canvas = document.querySelector("canvas") as HTMLCanvasElement;
 const infoContainer = document.querySelector("#infoContainer") as HTMLElement;
 const postcodeField = document.querySelector("#postcode");
@@ -47,6 +48,7 @@ const resetContainers = () => {
   if (!infoContainer) return;
   infoContainer.innerHTML = "";
 
+  map.style.height = "0";
   title?.classList.add("hidden");
   otherRes?.classList.add("hidden");
 };
@@ -57,7 +59,7 @@ const onSearch = async () => {
   const data = await fetchResult(state, errorDiv, postcodeField);
   if (data) {
     const formattedData = formatData(data);
-    generateMap(formattedData, state, canvas);
+    generateMap(formattedData, state, canvas, map);
     generateInfo(formattedData, infoContainer);
     title?.classList.remove("hidden");
     otherRes?.classList.remove("hidden");
