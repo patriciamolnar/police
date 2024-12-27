@@ -1,4 +1,3 @@
-import { PoliceData } from "./_models";
 import { fetchResult } from "./utils/api.utils";
 import { formatData } from "./utils/data-formatter.utils";
 import {
@@ -7,6 +6,7 @@ import {
   updatePostcodeError,
 } from "./utils/dom-updater.utils";
 import { State } from "./utils/state.class";
+import "./../css/styles.css";
 
 // DOM elements
 const canvas = document.querySelector("canvas") as HTMLCanvasElement;

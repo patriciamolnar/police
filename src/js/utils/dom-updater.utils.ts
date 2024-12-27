@@ -80,5 +80,14 @@ export const displayMap = (
         },
       ],
     },
+    options: {
+      indexAxis: "y",
+      responsive: true,
+      scales: {
+        x: {
+          beginAtZero: true,
+        },
+      },
+    },
   });
 };

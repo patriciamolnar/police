@@ -32,26 +32,32 @@
               placeholder="e.g. SW1A 1AA"
             />
 
-            <label for="month">Choose a month*</label>
-            <select name="month" id="month">
-              <option value="01">January</option>
-              <option value="02">February</option>
-              <option value="03">March</option>
-              <option value="04">April</option>
-              <option value="05">May</option>
-              <option value="06">June</option>
-              <option value="07">July</option>
-              <option value="08">August</option>
-              <option value="09">September</option>
-              <option value="10">Oktober</option>
-              <option value="11">November</option>
-              <option value="12">December</option>
-            </select>
+            <div id="dateSelector">
+              <div>
+                <label for="month">Choose a month*</label>
+                <select name="month" id="month">
+                  <option value="01">January</option>
+                  <option value="02">February</option>
+                  <option value="03">March</option>
+                  <option value="04">April</option>
+                  <option value="05">May</option>
+                  <option value="06">June</option>
+                  <option value="07">July</option>
+                  <option value="08">August</option>
+                  <option value="09">September</option>
+                  <option value="10">Oktober</option>
+                  <option value="11">November</option>
+                  <option value="12">December</option>
+                </select>
+              </div>
 
-            <label for="year">Choose a year*</label>
-            <select name="year" id="year">
-              <!-- options dynamically added based on current year -->
-            </select>
+              <div>
+                <label for="year">Choose a year*</label>
+                <select name="year" id="year">
+                  <!-- options dynamically added based on current year -->
+                </select>
+              </div>
+            </div>
 
             <button type="button" id="search">Search</button>
           </form>
@@ -60,7 +66,9 @@
           </p>
         </div>
 
-        <canvas id="mapContainer" height="0"></canvas>
+        <div id="mapInfoContainer">
+          <canvas height="0"></canvas>
+        </div>
         <div id="infoContainer"></div>
       </div>
 
