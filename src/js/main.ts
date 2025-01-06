@@ -69,6 +69,7 @@ const onSearch = async () => {
     generateInfo(formattedData, infoContainer);
     title?.classList.remove("hidden");
     otherRes?.classList.remove("hidden");
+  } else {
   }
 
   setButtonState(searchBtn, "Search");
@@ -95,19 +96,10 @@ document.body.addEventListener("keydown", (e) => {
 });
 
 postcodeField?.addEventListener("input", (e) => {
-  const isValidPostcode = state.setPostcode(
-    (e.target as HTMLInputElement).value
-  );
+  state.setPostcode((e.target as HTMLInputElement).value);
 
   if (!state.isFirstEntry) {
     validatePostcode();
-    // updatePostcodeError(errorDiv, postcodeField, isValidPostcode);
-
-    // if (!isValidPostcode) {
-    //   searchBtn?.setAttribute("disabled", "true");
-    // } else {
-    //   searchBtn?.removeAttribute("disabled");
-    // }
   }
 });
 

@@ -18,9 +18,6 @@ export class State {
 
     if (cleanedPostcode.match(POSTCODE_REGEX)) {
       this.#postcode = postcode;
-      return true;
-    } else {
-      return false;
     }
   }
 
