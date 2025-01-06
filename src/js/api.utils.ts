@@ -38,6 +38,8 @@ export const fetchResult = async (
   errorDiv: Element | null,
   postcodeField: Element | null
 ) => {
+  if (!state.getPostcode()) return;
+
   const location = await getLatLong(state.getPostcode());
   if (!location) {
     updatePostcodeError(errorDiv, postcodeField, false);

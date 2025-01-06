@@ -6,13 +6,13 @@ export class State {
   #postcode: string = "";
   #month: string = "01";
   #year: number = new Date().getFullYear();
+  isFirstEntry = true;
 
   chart: Chart<"bar", number[], string> | null = null;
 
   getPostcode() {
     return this.#postcode;
   }
-
   setPostcode(postcode: string) {
     const cleanedPostcode = postcode.replace(/\s/g, "");
 

@@ -221,6 +221,11 @@ button:focus {
   outline: none;
 }
 
+button:disabled {
+  background-color: var(--grey);
+  border: 1px solid var(--grey);
+}
+
 p {
   text-shadow: 0 0 5px #000;
 }

@@ -54,8 +54,14 @@ const resetContainers = () => {
 };
 
 const onSearch = async () => {
+  if (state.isFirstEntry) {
+    validatePostcode();
+    state.isFirstEntry = false;
+  }
+
   setButtonState(searchBtn, "Loading...");
   resetContainers();
+
   const data = await fetchResult(state, errorDiv, postcodeField);
   if (data) {
     const formattedData = formatData(data);
@@ -64,8 +70,20 @@ const onSearch = async () => {
     title?.classList.remove("hidden");
     otherRes?.classList.remove("hidden");
   }
+
   setButtonState(searchBtn, "Search");
   //remove focus from button
+};
+
+const validatePostcode = () => {
+  const isValidPostcode = !!state.getPostcode();
+  updatePostcodeError(errorDiv, postcodeField, isValidPostcode);
+
+  if (!isValidPostcode) {
+    searchBtn?.setAttribute("disabled", "true");
+  } else {
+    searchBtn?.removeAttribute("disabled");
+  }
 };
 
 // event listeners
@@ -76,11 +94,21 @@ document.body.addEventListener("keydown", (e) => {
   }
 });
 
-postcodeField?.addEventListener("blur", (e) => {
+postcodeField?.addEventListener("input", (e) => {
   const isValidPostcode = state.setPostcode(
     (e.target as HTMLInputElement).value
   );
-  updatePostcodeError(errorDiv, postcodeField, isValidPostcode);
+
+  if (!state.isFirstEntry) {
+    validatePostcode();
+    // updatePostcodeError(errorDiv, postcodeField, isValidPostcode);
+
+    // if (!isValidPostcode) {
+    //   searchBtn?.setAttribute("disabled", "true");
+    // } else {
+    //   searchBtn?.removeAttribute("disabled");
+    // }
+  }
 });
 
 monthSelect?.addEventListener("change", (e) => {
