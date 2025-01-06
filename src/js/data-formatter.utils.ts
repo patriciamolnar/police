@@ -1,4 +1,4 @@
-import { FormattedData, PoliceData } from "../_models";
+import { FormattedData, PoliceData } from "./models";
 
 export const formatData = (data: PoliceData[]) => {
   const reducedData = reduceData(data);

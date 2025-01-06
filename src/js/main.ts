@@ -1,12 +1,12 @@
-import { fetchResult } from "./utils/api.utils";
-import { formatData } from "./utils/data-formatter.utils";
+import { fetchResult } from "./api.utils";
+import { formatData } from "./data-formatter.utils";
 import {
   generateInfo,
   generateMap,
   setButtonState,
   updatePostcodeError,
-} from "./utils/dom-updater.utils";
-import { State } from "./utils/state.class";
+} from "./dom-updater.utils";
+import { State } from "./state.class";
 import "./../css/styles.css";
 
 // DOM elements

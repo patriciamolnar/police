@@ -1,6 +1,6 @@
 import Chart from "chart.js/auto";
-import { FormattedData } from "../_models";
-import { COLORS, ERRORS, LABEL_DESCRIPTIONS } from "../_static";
+import { FormattedData } from "./models";
+import { COLORS, ERRORS, LABEL_DESCRIPTIONS } from "./static";
 import { State } from "./state.class";
 
 export const updatePostcodeError = (

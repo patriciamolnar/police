@@ -1,7 +1,7 @@
-import { PoliceData, PostcodeData } from "../_models";
-import { ERRORS } from "../_static";
 import { updateError, updatePostcodeError } from "./dom-updater.utils";
+import { PoliceData, PostcodeData } from "./models";
 import { State } from "./state.class";
+import { ERRORS } from "./static";
 
 const getLatLong = async (postcode: string): Promise<PostcodeData | null> => {
   const url = `https://api.postcodes.io/postcodes/${postcode}`;
