@@ -74,7 +74,7 @@ const mergingStolenGood = (result: FormattedData) => {
 const renameLabels = (result: FormattedData) => {
   const labels = result[0].map((item) => {
     if (item == null) {
-      return "Other";
+      return "Other**";
     } else if (item == "Firearms") {
       return "Guns";
     } else if (item == "Anything to threaten or harm anyone") {
