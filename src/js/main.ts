@@ -67,10 +67,12 @@ const state = new State();
 const resetContainers = () => {
   if (!infoContainer) return;
   infoContainer.innerHTML = "";
+  infoContainer.style.paddingBottom = "0";
 
   map.style.height = "0";
   title?.classList.add("hidden");
   otherRes?.classList.add("hidden");
+  if (state.chart) state.chart.destroy();
 };
 
 const onSearch = async () => {

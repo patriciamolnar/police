@@ -50,8 +50,6 @@ export const generateMap = (
 ) => {
   if (!data || !canvas || !map) return;
 
-  if (state.chart) state.chart.destroy();
-
   map.style.height = "500px";
 
   state.chart = new Chart(canvas, {
