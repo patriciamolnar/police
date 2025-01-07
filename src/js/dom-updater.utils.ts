@@ -18,7 +18,7 @@ export const updatePostcodeError = (
   } else {
     element.classList.add("error");
     element.classList.add("error-border");
-    errorDiv.innerHTML = `<span class='background'><span class='exclaim'>!</span>${message}</span>`;
+    errorDiv.innerHTML = `<span class='background'><span class='exclaim'>!</span>&nbsp;${message}</span>`;
   }
 };
 
@@ -32,7 +32,7 @@ export const updateError = (
   if (isValid) {
     errorDiv.textContent = "";
   } else {
-    errorDiv.innerHTML = `<span class='background'><span class='exclaim'>!</span>${message}</span>`;
+    errorDiv.innerHTML = `<span class='background'><span class='exclaim'>!</span>&nbsp;${message}</span>`;
   }
 };
 
