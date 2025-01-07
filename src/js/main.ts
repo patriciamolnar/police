@@ -70,12 +70,6 @@ const onSearch = async () => {
     generateInfo(formattedData, infoContainer);
     title?.classList.remove("hidden");
     otherRes?.classList.remove("hidden");
-  } else {
-    updateError(
-      errorDiv,
-      "An unknown error occurred. Please try again later.",
-      false
-    );
   }
 
   setButtonState(searchBtn, "Search");
