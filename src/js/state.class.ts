@@ -34,10 +34,17 @@ export class State {
   getYear() {
     return this.#year;
   }
-  setYear(yearStr: string) {
-    const year = parseInt(yearStr);
+  setYear(year: string | number) {
+    let _year: number;
+
+    if (typeof year === "string") {
+      _year = parseInt(year);
+    } else {
+      _year = year;
+    }
+
     const currentYear = new Date().getFullYear();
-    if (currentYear - year > 3) return;
-    this.#year = year;
+    if (currentYear - _year > 3) return;
+    this.#year = _year;
   }
 }

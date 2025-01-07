@@ -4,7 +4,6 @@ import {
   generateInfo,
   generateMap,
   setButtonState,
-  updateError,
   updatePostcodeError,
 } from "./dom-updater.utils";
 import { State } from "./state.class";
@@ -23,10 +22,21 @@ const errorDiv = document.querySelector("#error");
 const title = document.querySelector("#title");
 const otherRes = document.querySelector("#otherResolution");
 
+const state = new State();
+
 // initialising years
 (() => {
-  const currentYear = new Date().getFullYear();
-  const years = [currentYear];
+  const date = new Date();
+  const currentYear = date.getFullYear();
+  const currentMonth = date.getMonth();
+
+  // only make current year available if it's march +
+  const years = [];
+  if (currentMonth > 2) {
+    years.push(currentYear);
+  } else {
+    state.setYear(currentYear - 1);
+  }
 
   for (let i = 1; i <= 3; i++) {
     years.push(currentYear - i);
@@ -41,9 +51,18 @@ const otherRes = document.querySelector("#otherResolution");
     option.text = yearStr;
     yearSelect.appendChild(option);
   });
-})();
 
-const state = new State();
+  // selecting month 3 months ago
+  const twoMonthsAgo = new Date(currentYear, currentMonth - 2).getMonth();
+  const newMonth = twoMonthsAgo + 1;
+  const monthSelectValue = newMonth < 10 ? `0${newMonth}` : `${newMonth}`;
+  const monthOption = monthSelect?.querySelector(
+    `option[value='${monthSelectValue}']`
+  ) as HTMLOptionElement;
+  if (monthOption) {
+    monthOption.selected = true;
+  }
+})();
 
 const resetContainers = () => {
   if (!infoContainer) return;
