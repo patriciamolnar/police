@@ -204,6 +204,7 @@ select:focus {
 }
 
 button {
+  position: relative;
   display: block;
   color: #000;
   background-color: var(--primary);
@@ -218,9 +219,8 @@ button {
 }
 
 button:focus {
-  background-color: var(--secondary-light);
-  border: 1px solid var(--secondary-light);
-  outline: none;
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
 }
 
 button:disabled {
