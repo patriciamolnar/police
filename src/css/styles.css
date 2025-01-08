@@ -31,10 +31,6 @@ body {
   font-weight: 400;
   text-align: center;
   overflow-x: hidden;
-
-  position: relative;
-  min-height: 100vh;
-  margin: 0 0 2em;
 }
 
 .header {
@@ -316,20 +312,21 @@ p {
   font-size: 0.8rem;
 }
 
-.push {
-  height: 0.5rem;
+main {
+  min-height: calc(100vh - 3rem);
 }
 
 footer {
   color: var(--neutral);
   background-color: var(--dark);
-  padding: 1.5em 0.5em;
   font-size: 0.8rem;
-
-  position: absolute;
-  bottom: -2rem;
   width: 100%;
   height: 3rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
 }
 
 @media only screen and (min-width: 800px) {
