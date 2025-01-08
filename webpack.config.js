@@ -27,11 +27,12 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: "./src/index.html", // Use your HTML file as a template
+      favicon: "./src/favicon.png",
     }),
   ],
   devServer: {
     static: "./dist",
-    port: 3000, // Development server port
+    port: 3000,
     open: true, // Open the browser automatically
   },
   mode: "development", // Set to 'production' for a production build
