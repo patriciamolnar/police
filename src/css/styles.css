@@ -1,17 +1,21 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700;800&display=swap");
 
 :root {
-  --orange: #ff7f50;
-  --sky: #87ceeb;
-  --navy: #001f3f;
-  --navy-dark: #13283a;
-  --dark: #0d1a26;
-  --red: #ff4136;
-  --grey: #ccc;
+  --primary-light: #ffa280;
+  --primary: #ff7f50;
+  --primary-dark: #ff6933;
+
+  --secondary-light: #87ceeb;
+  --secondary: #001f3f;
+  --secondary-dark: #0d1a26;
+
+  --error: #ff0d00;
+  --neutral: #ccc;
+
   --font: "Nunito", sans-serif;
-  --no-margin: 0 auto;
-  --def-margin: 0.5em auto;
-  --def-radius: 0.5em;
+
+  --no-y-margin: 0 auto;
+  --default-radius: 0.5em;
 }
 
 * {
@@ -22,7 +26,7 @@
 
 body {
   width: 100%;
-  background-color: var(--dark);
+  background-color: var(--secondary-dark);
   font-family: var(--font);
   font-weight: 400;
   text-align: center;
@@ -54,7 +58,7 @@ body {
   transform: translateX(-50%);
   width: 30%;
   height: 2px;
-  background-color: var(--orange);
+  background-color: var(--primary);
 }
 
 .heading::before {
@@ -66,34 +70,31 @@ body {
 }
 
 a {
-  color: var(--orange);
+  color: var(--primary);
   display: inline-block;
-  border-bottom: 1px solid var(--orange);
+  border-bottom: 1px solid var(--primary);
   text-decoration: none;
   font-weight: 700;
 }
 
 a:focus {
-  color: var(--sky);
-  outline: 1px solid var(--sky);
+  outline: 1px solid var(--primary);
   outline-offset: 3px;
   border: none;
 }
 
 a:focus:not(:focus-visible) {
-  color: #ffa280;
   outline: none;
-  border-bottom: 1px solid #ffa280;
 }
 
 .error {
-  color: var(--red);
+  color: var(--error);
   font-size: 1.2rem;
   font-weight: 700;
 }
 
 .error-border {
-  outline: 2px solid var(--red);
+  outline: 2px solid var(--error);
 }
 
 .error-placeholder {
@@ -104,7 +105,7 @@ a:focus:not(:focus-visible) {
   display: inline-block;
   width: 1.5rem;
   height: 1.5rem;
-  border: 2px solid var(--red);
+  border: 2px solid var(--error);
   line-height: 1.4rem;
   font-size: 0.85rem;
   border-radius: 2rem;
@@ -116,7 +117,7 @@ a:focus:not(:focus-visible) {
   align-items: center;
   background-color: rgba(255, 255, 255, 0.85);
   padding: 0.3em 0.5em 0.4em;
-  border-radius: var(--def-radius);
+  border-radius: var(--default-radius);
   margin-bottom: 0.5em;
 }
 
@@ -146,13 +147,13 @@ a:focus:not(:focus-visible) {
 
 form {
   width: 80%;
-  margin: var(--no-margin);
+  margin: var(--no-y-margin);
 }
 
 label,
 input {
   display: block;
-  margin: var(--no-margin);
+  margin: var(--no-y-margin);
 }
 
 label {
@@ -163,28 +164,23 @@ label {
 input,
 select {
   width: 100%;
-  border-radius: var(--def-radius);
+  border-radius: var(--default-radius);
   border: none;
   font-family: var(--font);
   font-weight: 600;
   font-size: 1rem;
-  color: var(--navy);
+  color: var(--secondary);
   height: 2.8rem;
 }
 
 input {
   padding: 12px;
   width: 100%;
-  margin: var(--def-margin);
+  margin: 0.5em auto;
 }
 
 input::placeholder {
-  color: var(--navy);
-}
-
-input:focus {
-  outline: none;
-  border: 2px solid var(--orange);
+  color: var(--secondary);
 }
 
 select {
@@ -192,9 +188,10 @@ select {
   padding: 0 12px;
 }
 
+input:focus,
 select:focus {
-  outline: none;
-  border: 2px solid var(--orange);
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
 }
 
 #dateSelector {
@@ -208,10 +205,10 @@ select:focus {
 
 button {
   display: block;
-  color: var(--navy-dark);
-  background-color: var(--orange);
+  color: #000;
+  background-color: var(--primary);
   padding: 0.5em 1.5em;
-  border: 1px solid var(--orange);
+  border: 1px solid var(--primary);
   border-radius: 2em;
   margin: 1rem auto;
   font-family: var(--font);
@@ -221,14 +218,14 @@ button {
 }
 
 button:focus {
-  background-color: var(--sky);
-  border: 1px solid var(--sky);
+  background-color: var(--secondary-light);
+  border: 1px solid var(--secondary-light);
   outline: none;
 }
 
 button:disabled {
-  background-color: var(--grey);
-  border: 1px solid var(--grey);
+  background-color: var(--neutral);
+  border: 1px solid var(--neutral);
 }
 
 p {
@@ -305,7 +302,7 @@ p {
   bottom: -2px;
   right: 0;
   height: 2px;
-  background-color: var(--sky);
+  background-color: var(--secondary-light);
 }
 
 .infoDiv .description {
@@ -324,7 +321,7 @@ p {
 }
 
 footer {
-  color: var(--grey);
+  color: var(--neutral);
   background-color: var(--dark);
   padding: 1.5em 0.5em;
   font-size: 0.8rem;
@@ -388,14 +385,12 @@ footer {
 
 @media not all and (hover: none) {
   a:hover {
-    --dark-orange: #ff6933;
-    color: var(--dark-orange);
-    border-bottom: 1px solid var(--dark-orange);
+    color: var(--primary-dark);
+    border-bottom: 1px solid var(--primary-dark);
   }
 
   #form-container button:hover {
-    --dark-orange: #ff6933;
-    background-color: var(--dark-orange);
-    border: 1px solid var(--dark-orange);
+    background-color: var(--primary-dark);
+    border: 1px solid var(--primary-dark);
   }
 }
