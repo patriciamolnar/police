@@ -109,10 +109,11 @@ export const generateInfo = (
   infoContainer: HTMLElement | null
 ) => {
   if (!infoContainer) return;
+
   infoContainer.innerHTML = "";
   infoContainer.style.paddingBottom = "0";
-  const names = data[0];
 
+  const names = data[0];
   names.forEach((name, i) => {
     const div = document.createElement("div");
     div.classList.add("infoDiv");

@@ -1,8 +1,6 @@
 import Chart from "chart.js/auto";
-
-const POSTCODE_REGEX = /^[A-Z]{1,2}[0-9]{1,2}[A-Z]{0,1}[0-9]{1,2}[A-Z]{2}$/i;
-
 export class State {
+  #POSTCODE_REGEX = /^[A-Z]{1,2}[0-9]{1,2}[A-Z]{0,1}[0-9]{1,2}[A-Z]{2}$/i;
   #postcode: string = "";
   #month: string = "01";
   #year: number = new Date().getFullYear();
@@ -16,7 +14,7 @@ export class State {
   setPostcode(postcode: string) {
     const cleanedPostcode = postcode.replace(/\s/g, "");
 
-    if (cleanedPostcode.match(POSTCODE_REGEX)) {
+    if (cleanedPostcode.match(this.#POSTCODE_REGEX)) {
       this.#postcode = postcode;
     }
   }
@@ -38,7 +36,9 @@ export class State {
     let _year: number;
 
     if (typeof year === "string") {
-      _year = parseInt(year);
+      const y = parseInt(year);
+      if (!y) return;
+      _year = y;
     } else {
       _year = year;
     }
