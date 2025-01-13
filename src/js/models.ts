@@ -32,7 +32,7 @@ interface PoliceDataLocation {
 }
 
 interface OutcomeObject {
-  id: string; //todo: hardcode types?
+  id: string;
   name: string;
 }
 

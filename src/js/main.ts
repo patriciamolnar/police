@@ -109,7 +109,6 @@ const validatePostcode = () => {
 };
 
 // event listeners
-//todo: is there a better way to do this?
 document.body.addEventListener("keydown", (e) => {
   if (e.key === "Tab") {
     document.documentElement.classList.remove("no-focus-outline");

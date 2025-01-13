@@ -219,6 +219,10 @@ button:focus {
   outline-offset: 3px;
 }
 
+button:focus:not(:focus-visible) {
+  outline: none;
+}
+
 button:disabled {
   background-color: var(--neutral);
   border: 1px solid var(--neutral);
@@ -228,13 +232,9 @@ p {
   text-shadow: 0 0 5px #000;
 }
 
-.no-focus-outline
-  #form-container
-  input:focus
-  .no-focus-outline
-  #form-container
-  select:focus {
-  border: none;
+.no-focus-outline #form-container input:focus,
+.no-focus-outline #form-container select:focus {
+  outline: none;
 }
 
 #mapContainer {

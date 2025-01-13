@@ -15,7 +15,7 @@ const reduceData = (data: PoliceData[]) => {
 
 //getting x-Axis values & setting up y values.
 const sortDataForX = (data: string[][]) => {
-  const result: FormattedData = [[], [], [], []]; //todo: type
+  const result: FormattedData = [[], [], [], []];
 
   data.forEach((item) => {
     if (!result[0].includes(item[0])) {
