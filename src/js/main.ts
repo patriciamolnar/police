@@ -16,7 +16,7 @@ const infoContainer = document.querySelector("#infoContainer") as HTMLElement;
 const postcodeField = document.querySelector("#postcode");
 const monthSelect = document.querySelector("#month");
 const yearSelect = document.querySelector("#year");
-const searchBtn = document.querySelector("#search");
+const searchBtn = document.querySelector("#search") as HTMLButtonElement;
 const errorDiv = document.querySelector("#error");
 
 const title = document.querySelector("#title");
@@ -93,8 +93,8 @@ const onSearch = async () => {
     otherRes?.classList.remove("hidden");
   }
 
+  searchBtn.blur();
   setButtonState(searchBtn, "Search");
-  //remove focus from button
 };
 
 const validatePostcode = () => {
