@@ -306,10 +306,13 @@ p {
 }
 
 #last {
-  background-color: #13283a;
   padding: 1.5em 1em;
+  background-color: #13283a;
   color: #fff;
   font-size: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
 }
 
 main {

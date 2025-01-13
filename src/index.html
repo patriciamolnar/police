@@ -39,72 +39,70 @@
 
   <body>
     <main id="content">
-      <div id="container">
-        <div class="header">
-          <h1 class="heading">Police stop and search results for your area</h1>
-        </div>
+      <div class="header">
+        <h1 class="heading">Police stop and search results for your area</h1>
+      </div>
 
-        <div id="form-container">
-          <div id="error" class="error error-container"></div>
-          <form>
-            <label for="postcode">UK Postcode*</label>
-            <input
-              type="text"
-              name="postcode"
-              id="postcode"
-              placeholder="e.g. SW1A 1AA"
-            />
+      <div id="form-container">
+        <div id="error" class="error error-container"></div>
+        <form>
+          <label for="postcode">UK Postcode*</label>
+          <input
+            type="text"
+            name="postcode"
+            id="postcode"
+            placeholder="e.g. SW1A 1AA"
+          />
 
-            <div id="dateSelector">
-              <div>
-                <label for="month">Month*</label>
-                <select name="month" id="month">
-                  <option value="01">January</option>
-                  <option value="02">February</option>
-                  <option value="03">March</option>
-                  <option value="04">April</option>
-                  <option value="05">May</option>
-                  <option value="06">June</option>
-                  <option value="07">July</option>
-                  <option value="08">August</option>
-                  <option value="09">September</option>
-                  <option value="10">Oktober</option>
-                  <option value="11">November</option>
-                  <option value="12">December</option>
-                </select>
-              </div>
-
-              <div>
-                <label for="year">Year*</label>
-                <select name="year" id="year">
-                  <!-- options dynamically added based on current year -->
-                </select>
-              </div>
+          <div id="dateSelector">
+            <div>
+              <label for="month">Month*</label>
+              <select name="month" id="month">
+                <option value="01">January</option>
+                <option value="02">February</option>
+                <option value="03">March</option>
+                <option value="04">April</option>
+                <option value="05">May</option>
+                <option value="06">June</option>
+                <option value="07">July</option>
+                <option value="08">August</option>
+                <option value="09">September</option>
+                <option value="10">Oktober</option>
+                <option value="11">November</option>
+                <option value="12">December</option>
+              </select>
             </div>
 
-            <button type="button" id="search">Search</button>
-          </form>
-          <p class="small">
-            *Police only supply data for 3 years, with a 2 months delay.
-          </p>
-        </div>
-
-        <div id="mapContainer">
-          <h2 class="heading hidden" id="title">Your results</h2>
-          <div id="map">
-            <canvas height="0"></canvas>
+            <div>
+              <label for="year">Year*</label>
+              <select name="year" id="year">
+                <!-- options dynamically added based on current year -->
+              </select>
+            </div>
           </div>
-          <p class="hidden other-resolution" id="otherResolution">
-            **Other resolutions could be amongst others: a warning, summons or a
-            <a
-              href="https://www.askthe.police.uk/content/Q760.htm"
-              target="_blank"
-              >community resolution</a
-            >
-          </p>
-        </div>
-        <div id="infoContainer"></div>
+
+          <button type="button" id="search">Search</button>
+        </form>
+        <p class="small">
+          *Police only supply data for 3 years, with a 2 months delay.
+        </p>
       </div>
+
+      <div id="mapContainer">
+        <h2 class="heading hidden" id="title">Your results</h2>
+        <div id="map">
+          <canvas height="0"></canvas>
+        </div>
+        <p class="hidden other-resolution" id="otherResolution">
+          **Other resolutions could be amongst others: a warning, summons or a
+          <a
+            href="https://www.askthe.police.uk/content/Q760.htm"
+            target="_blank"
+            >community resolution</a
+          >
+        </p>
+      </div>
+      <div id="infoContainer"></div>
 
       <div id="last">
         <p>
@@ -112,7 +110,8 @@
           for others. For example, police conduct many stop and searches in busy
           areas in bigger cities such as London. Rural areas or quieter
           locations on the other hand will have only a few per month or none.
-          <br /><br />
+        </p>
+        <p>
           The locations of the stop and searches showing up for your postcode
           have not been conducted exactly at that point. The police only supply
           approximate data on where the stop and search took place to protect
