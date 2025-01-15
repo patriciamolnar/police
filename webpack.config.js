@@ -5,7 +5,7 @@ module.exports = {
   entry: "./src/js/main.ts", // Main TypeScript file
   output: {
     filename: "bundle.js", // Output JavaScript file
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve(__dirname, "docs"),
     clean: true, // Clean the output folder before building
   },
   resolve: {
